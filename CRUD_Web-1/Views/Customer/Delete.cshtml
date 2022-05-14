@@ -1,0 +1,59 @@
+﻿@model CRUD_Web_1.Models.Customer
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3 style="color:Red">Do You Want To Remove This Record?</h3>
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <legend style="font-family:Arial Black;color:Green">Customer</legend>
+            @Html.HiddenFor(model => model.CustomerID)
+            <div class="display-label" style="font-family:Arial Black">
+                @Html.DisplayNameFor(model => model.Name)
+            </div>
+            <div class="display-field" style="color:Blue">
+                @Html.DisplayFor(model => model.Name)
+            </div>
+            <div class="display-label" style="font-family:Arial Black">
+                @Html.DisplayNameFor(model => model.Address)
+            </div>
+            <div class="display-field" style="color:Blue">
+                @Html.DisplayFor(model => model.Address)
+            </div>
+            <div class="display-label" style="font-family:Arial Black">
+                @Html.DisplayNameFor(model => model.Mobileno)
+            </div>
+            <div class="display-field" style="color:Blue">
+                @Html.DisplayFor(model => model.Mobileno)
+            </div>
+            <div class="display-label" style="font-family:Arial Black">
+                @Html.DisplayNameFor(model => model.Birthdate)
+            </div>
+            <div class="display-field" style="color:Blue">
+                @Html.DisplayFor(model => model.Birthdate)
+            </div>
+
+            <div class="display-label" style="font-family:Arial Black">
+                @Html.DisplayNameFor(model => model.EmailID)
+            </div>
+            <div class="display-field" style="color:Blue">
+                @Html.DisplayFor(model => model.EmailID)
+            </div>
+            <p>
+                <input id="Submit1" onclick="return confirm('Are You Sure To Remove ?')"
+                       type="submit" value="Remove" style="color:Navy;font-family:Arial; font-size:large" />
+            </p>
+        </fieldset>
+    }
+    <div style="color:Blue;font-family:Arial">
+        @Html.ActionLink("Back to Customer Records", "Index")
+    </div>
+</body>
+</html>
