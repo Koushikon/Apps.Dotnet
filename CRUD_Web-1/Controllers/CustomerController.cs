@@ -43,7 +43,7 @@ namespace CRUD_Web_1.Controllers
                 TempData["ForCreate"] = (res == 1) ?
                     "Record Is Inserted Successfully" :
                     "Error Occurred in Inserting Data";
-                
+
                 ModelState.Clear();
                 return RedirectToAction("Index");
             }
