@@ -1,0 +1,65 @@
+﻿@page "/shoplist"
+
+<h3>@Name's List:</h3>
+
+@if(_shopsList.Count > 0)
+{
+    <div class="progress my-2">
+        <div class="progress-bar" role="progressbar"
+        style="width: @(CompletePercentage)%"
+        area-valuemin="0" area-valuemax="100">@(CompletePercentage)%</div>
+    </div>
+}
+
+<EditForm class="row g-3" Model="@_newItem" OnValidSubmit="AddItem">
+    <div class="col-auto">
+        <InputText class="form-control" @bind-Value="_newItem.ItemName" placeholder="Item Name"/>
+    </div>
+    <div class="col-auto">
+        <button class="btn btn-outline-primary mb-3" type="submit">Add Item</button>
+    </div>
+</EditForm>
+
+<ul class="list-group">
+    @foreach(Shops item in _shopsList)
+    {
+        @if(item.IsComplete)
+        {
+            <li class="list-group-item list-group-item-secondery my-1"
+                @onclick="(() => item.IsComplete = !item.IsComplete)">
+                <del>@item.ItemName</del>
+            </li>
+        }
+        else
+        {
+            <li class="list-group-item list-group-item-success my-1"
+                @onclick="(() => item.IsComplete = !item.IsComplete)">
+                @item.ItemName
+            </li>
+        }
+    }
+</ul>
+
+
+@code {
+    private List<Shops> _shopsList = new List<Shops>();
+    private Shops _newItem = new Shops();
+
+    [Parameter]
+    public string Name { get; set; } = "Task";
+
+    private int CompletePercentage
+    {
+        get
+        {
+            return (_shopsList.Count( x => x.IsComplete) *100 ) / _shopsList.Count;
+        }
+    }
+
+    private void AddItem()
+    {
+        if (string.IsNullOrWhiteSpace(_newItem.ItemName)) return;
+        _shopsList.Add(_newItem);
+        _newItem = new Shops();
+    }
+}
