@@ -1,0 +1,19 @@
+﻿@page "/"
+
+@* With Global Imports *@
+@inject Demo _demo
+@inject Demo _demo2
+@inject ProcessDemo _processDemo
+
+<PageTitle>Index</PageTitle>
+
+<h3>Dependency Injection Demo</h3>
+
+<p>
+    <strong>Startup Time: </strong>@_demo.StartupTime.ToString("hh:mm:ss fffffff")
+    <br />
+    <strong>Startup Time 2nd: </strong>@_demo2.StartupTime.ToString("hh:mm:ss fffffff")
+    <br />
+    <strong>Days in Month: </strong>@_processDemo.GetDaysMonth()
+</p>
+
