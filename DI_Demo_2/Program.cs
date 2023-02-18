@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components.Web;
 
 namespace DI_Demo_2
 {
-    public class Program
+    public sealed class Program
     {
         public static void Main(string[] args)
         {
