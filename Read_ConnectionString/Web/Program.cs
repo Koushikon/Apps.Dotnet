@@ -25,7 +25,7 @@ var userDb = app.Configuration.GetSection("Modules:Users").GetConnectionString("
 
 // In case we do not want to use a ConnectionString property, we can get configuration this way
 var usersDbTwo = app.Configuration["ModulesTwo:Users:Database"];
-var usersDbTwoOr = app.Configuration.GetValue<string>("Modules:Users:Database"); // Or, This way
+var usersDbTwoOr = app.Configuration.GetValue<string>("ModulesTwo:Users:Database"); // Or, This way
 
 // Read Data from Windows Enviroment Variables
 var MyMail = Environment.GetEnvironmentVariable("MailFrom");
