@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"**/*.ini": true,
+			"**/.vs": true,
+			"**/.git": true,
+			"**/bin/": true,
+			"**/obj": true,
+		},
+		"files.defaultLanguage": "${activeEditorLanguage}",
+		"editor.formatOnSave": true,
+	}
+}
