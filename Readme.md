@@ -36,6 +36,7 @@
 - `APISecurity` Project describes Authentication & Authorization with Claim, Policy based of an API.
 - `Web_i` describes Creating an API Controller inside MVC Project useful when API service is small part of the App.
 - `APIMonitor` Project describes looging, Health checking and Monitoring of an API
+- `APIProtection` Project describes API protection using data validation, caching and IP rate limiting.
 
 ## View Data Binding:
 
