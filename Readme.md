@@ -38,6 +38,12 @@
 - `APIMonitor` Project describes looging, Health checking and Monitoring of an API
 - `APIProtection` Project describes API protection using data validation, caching and IP rate limiting.
 
+## TodoApp Web Api App
+- This Web Api made using `Dapper` micro-orm for DataAccess of `CRUD` operation, Api `Health-Checks`, Token `Authentication and Authorization` etc.
+
+## RetriveHostIP
+- Different ways we can get the Client IP address on the Web Server
+
 ## View Data Binding:
 
 ![Data Bind Project Picture](./_Files/data-binding.png)
