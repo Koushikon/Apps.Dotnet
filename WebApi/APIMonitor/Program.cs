@@ -53,6 +53,10 @@ app.MapHealthChecks("/health", new HealthCheckOptions
 {
     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
 });
+
+// To Allow Anonymous to access health checks
+// app.MapHealthChecks("/health").AllowAnonymous();
+
 app.MapHealthChecksUI();
 
 // For WatchDog Monitor API
