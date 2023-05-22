@@ -1,0 +1,38 @@
+@hostname=localhost
+@port=7077
+@host={{hostname}}:{{port}}
+
+POST https://{{host}}/api/Authentication/tokenize
+Accept: text/plain
+Content-Type: application/json
+
+{
+  "userName": "username",
+  "userPassword": "password"
+}
+
+### Get all Todos
+@accessToken = {{authPasswordRequest.response.body.$.access_token}}
+
+GET https://{{host}}/api/Todos
+Authorization: Bearer <actual_token>
+
+###
+
+GET https://{{host}}/api/Todos/7
+
+###
+
+POST https://{{host}}/api/Todos
+
+###
+
+PUT https://{{host}}/api/Todos/
+
+###
+
+PUT https://{{host}}/api/Todos/7/Complete
+
+###
+
+DELETE https://{{host}}/api/Todos/7

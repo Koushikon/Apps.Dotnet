@@ -13,14 +13,12 @@ namespace Web_Api.Controllers;
 [ApiController]
 public class TodosController : ControllerBase
 {
-    private readonly IConfiguration _config;
-    private readonly ILogger<TodosController> _log;
+    private readonly IUtilityLogger<TodosController> _log;
     private readonly ITodoService _todo;
 
-    public TodosController(ITodoService todo, IConfiguration config, ILogger<TodosController> log)
+    public TodosController(ITodoService todo, IUtilityLogger<TodosController> log)
     {
         _todo = todo;
-        _config = config;
         _log = log;
     }
 
@@ -28,7 +26,7 @@ public class TodosController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<List<Todo>>> GetAll()
     {
-        _log.LogInformation("Get: Call to api/Todos:");
+        _log.Information("Get: Call to api/Todos:");
 
         Todo Obj = new()
         {
@@ -42,7 +40,7 @@ public class TodosController : ControllerBase
         }
         catch (Exception ex)
         {
-            _log.LogError(ex, "Call to api/Todos and Getting data failed.");
+            _log.Error("Call to api/Todos and Getting data failed.", ex);
             return BadRequest();
         }
     }
@@ -51,7 +49,7 @@ public class TodosController : ControllerBase
     [HttpGet("{todoId}")]
     public async Task<ActionResult<Todo?>> Get(int todoId)
     {
-        _log.LogInformation("Get: Call to api/Todos/{todoId}:", todoId);
+        _log.Information($"Get: Call to api/Todos/{todoId}:");
 
         Todo Obj = new()
         {
@@ -66,7 +64,7 @@ public class TodosController : ControllerBase
         }
         catch (Exception ex)
         {
-            _log.LogError(ex, "Call to {ApiPath} and Getting data failed. the Id was {todoId}", $"api/Todos/Id", todoId);
+            _log.Error($"Call to api/Todos/Id and Getting data failed. the Id was {todoId}", ex);
             return BadRequest();
         }
     }
@@ -75,7 +73,7 @@ public class TodosController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<Todo>> Create([FromBody] string task)
     {
-        _log.LogInformation("Post: Call to api/Todos/ (Task: {task}):", task);
+        _log.Information($"Post: Call to api/Todos/ (Task: {task}):");
 
         try
         {
@@ -84,7 +82,7 @@ public class TodosController : ControllerBase
         }
         catch (Exception ex)
         {
-            _log.LogError(ex, "Call to {ApiPath} and Getting data failed. the Task was {task}", task);
+            _log.Error($"Call to api/Todos/ and Getting data failed. the Task was {task}", ex);
             return BadRequest();
         }
     }
@@ -93,16 +91,15 @@ public class TodosController : ControllerBase
     [HttpPut("{todoId}")]
     public void Update(int todoId, [FromBody] string task)
     {
-        _log.LogInformation("Put: Call to api/Todos/ (Task: {task}):", task);
+        _log.Information($"Put: Call to api/Todos/ (Task: {task}):");
 
-        
         try
         {
             _todo.UpdateTodo(todoId, GetUseId(), task);
         }
         catch (Exception ex)
         {
-            _log.LogError(ex, "The Put Call to api/Todos/{todoId} failed. the Task was {task}", todoId, task);
+            _log.Error($"The Put Call to api/Todos/{todoId} failed. the Task was {task}", ex);
         }
     }
 
@@ -110,7 +107,7 @@ public class TodosController : ControllerBase
     [HttpPut("{todoId}/Complete")]
     public void Complete(int todoId)
     {
-        _log.LogInformation("Put: Call to api/Todos/todoId:");
+        _log.Information("Put: Call to api/Todos/todoId:");
 
         try
         {
@@ -118,7 +115,7 @@ public class TodosController : ControllerBase
         }
         catch (Exception ex)
         {
-            _log.LogError(ex, "The Put Call to api/Todos/todoId/Complete failed. the Id was {Id}", todoId);
+            _log.Error($"The Put Call to api/Todos/todoId/Complete failed. the Id was {todoId}", ex);
         }
     }
 
@@ -127,7 +124,7 @@ public class TodosController : ControllerBase
     [HttpDelete("{todoId}")]
     public void Delete(int todoId)
     {
-        _log.LogInformation("Delete: Call to api/Todos/todoId:");
+        _log.Information("Delete: Call to api/Todos/todoId:");
 
         try
         {
@@ -135,7 +132,7 @@ public class TodosController : ControllerBase
         }
         catch (Exception ex)
         {
-            _log.LogError(ex, "The Delete Call to api/Todos/todoId  failed. the Id was {Id}", todoId);
+            _log.Error($"The Delete Call to api/Todos/todoId failed. The Id was {todoId}", ex);
         }
     }
 

@@ -21,7 +21,7 @@ public class AuthenticationController : ControllerBase
     public record Authentication(string? UserName, string? UserPassword);
     public record Users(int Id, string FirstName, string LastName, string UserName);
 
-
+    // api/Authentication/tokenize
     [HttpPost("tokenize")]
     [AllowAnonymous]
     public ActionResult<string> Authenticate([FromBody] Authentication data)

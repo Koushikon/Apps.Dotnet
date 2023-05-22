@@ -22,6 +22,9 @@ public static class DependencyExtensions
 
         // Todo data service
         builder.Services.AddSingleton<ITodoService, TodoService>();
+
+        // Logging service
+        builder.Services.AddTransient(typeof(IUtilityLogger<>), typeof(UtilityLogger<>));
     }
 
     public static void AddAuthServices(this WebApplicationBuilder builder)
