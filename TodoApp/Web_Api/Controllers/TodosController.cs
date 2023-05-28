@@ -23,7 +23,7 @@ public class TodosController : ControllerBase
     }
 
     // GET: api/Todos
-    [HttpGet]
+    [HttpGet(Name = "GetAllTodos")]
     public async Task<ActionResult<List<Todo>>> GetAll()
     {
         _log.Information("Get: Call to api/Todos:");
@@ -46,7 +46,7 @@ public class TodosController : ControllerBase
     }
 
     // GET: api/Todos/5
-    [HttpGet("{todoId}")]
+    [HttpGet("{todoId}", Name = "GetTodo")]
     public async Task<ActionResult<Todo?>> Get(int todoId)
     {
         _log.Information($"Get: Call to api/Todos/{todoId}:");
@@ -70,7 +70,7 @@ public class TodosController : ControllerBase
     }
 
     // POST: api/Todos
-    [HttpPost]
+    [HttpPost( Name = "CreateTodo")]
     public async Task<ActionResult<Todo>> Create([FromBody] string task)
     {
         _log.Information($"Post: Call to api/Todos/ (Task: {task}):");
@@ -88,7 +88,7 @@ public class TodosController : ControllerBase
     }
 
     // PUT: api/Todos/5
-    [HttpPut("{todoId}")]
+    [HttpPut("{todoId}", Name = "UpdateTodoTask")]
     public void Update(int todoId, [FromBody] string task)
     {
         _log.Information($"Put: Call to api/Todos/ (Task: {task}):");
@@ -104,7 +104,7 @@ public class TodosController : ControllerBase
     }
 
     // GET: api/Todos/5/Complete
-    [HttpPut("{todoId}/Complete")]
+    [HttpPut("{todoId}/Complete", Name = "UpdateTodoComplete")]
     public void Complete(int todoId)
     {
         _log.Information("Put: Call to api/Todos/todoId:");
@@ -121,7 +121,7 @@ public class TodosController : ControllerBase
 
 
     // GET: api/Todos/5
-    [HttpDelete("{todoId}")]
+    [HttpDelete("{todoId}", Name = "DeleteTodo")]
     public void Delete(int todoId)
     {
         _log.Information("Delete: Call to api/Todos/todoId:");
