@@ -10,6 +10,17 @@
 
 ---
 
+## DI_Demo_2
+- Blazor with Dependency Injection with Different Types and Classes
+
+## DI_IDemo_2
+- `BlazorWeb`: Blazor with Dependency Injection with Different Types and Interfaces
+- `MVCWeb`: Setp Generic class Services with Dependency Injection and Interfaces
+- `BlazorTest`: Test the BlazorWeb Code with xUnit.
+
+## DI_MVC_Demo
+- Dependency Injection MVC Demo
+
 ## Hashids
 - A new way to encode your url parameters with HashIds Package [Source][link1001]
 - This prevents your users data from exposing it makes hard to guess the next id or something.
@@ -38,8 +49,12 @@
 - `APIMonitor` Project describes looging, Health checking and Monitoring of an API
 - `APIProtection` Project describes API protection using data validation, caching and IP rate limiting.
 
-## TodoApp Web Api App
+## TodoApp WebApi App
 - This Web Api made using `Dapper` micro-orm for DataAccess of `CRUD` operation, Api `Health-Checks`, Token `Authentication and Authorization` etc.
+
+## TodoApp_Client WebClient App
+- `Blz_Web`: Build an Blazor App accessing the TodoApp as Api Service to get the data.
+- `Blz_SwaggerAuto`: OpenApi Generated C# Api Client code.
 
 ## RetriveHostIP
 - Different ways we can get the Client IP address on the Web Server
