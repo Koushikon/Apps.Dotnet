@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "Home";
+    Layout = null;
+}
+
+@using Microsoft.Extensions.Options
+@inject IOptions<GoogleCaptchaConfig> _gConfig
+@model Login
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GCaptcha</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+<body>
+    <div class="h-100 d-flex align-items-center justify-content-center">
+
+        <div class="container">
+            <div class="h-100 d-flex align-items-center justify-content-center">
+                <div class="text-center w-30">
+                    <h1 class="display-4">Login</h1>
+
+                    <form method="post" asp-controller="Home" asp-action="Index">
+                        @Html.AntiForgeryToken()
+                        <div class="mb-3">
+                            <label for="Email" class="form-label float-start">Email address</label>
+                            <input asp-for="Email" class="form-control" type="text" placeholder="Enter email" required />
+                        </div>
+
+                        <input type="hidden" id="loginToken" asp-for="Token" />
+
+                        <div class="mb-3">
+                            <label for="Password" class="form-label float-start">Password</label>
+                            <input asp-for="Password" type="password" class="form-control" placeholder="Enter your password" required />
+                        </div>
+
+                        <div class="mb-3 text-center">
+                            <button class="btn rounded-pill btn-primary" name="Command" value="Login" type="submit">Sign In</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=@_gConfig.Value.SiteKey"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            grecaptcha.ready(function () {
+                grecaptcha.execute('@_gConfig.Value.SiteKey', { action: 'submit' }).then(function (token) {
+                    //console.log(token);
+                    document.getElementById("loginToken").value = token;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

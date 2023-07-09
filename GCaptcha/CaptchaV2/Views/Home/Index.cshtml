@@ -1,0 +1,84 @@
+﻿@{
+    ViewData["Title"] = "Home";
+    Layout = null;
+}
+
+@using Microsoft.Extensions.Options
+@inject IOptions<GoogleCaptchaConfig> gConfig
+@model Login
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GCaptcha V2</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+<body>
+    <div class="h-100 d-flex align-items-center justify-content-center">
+
+        <div class="container">
+            <div class="h-100 d-flex align-items-center justify-content-center">
+                <div class="text-center w-30">
+                    <h1 class="display-4">Login</h1>
+
+                    <form method="post" asp-controller="Home" asp-action="Index">
+                        @Html.AntiForgeryToken()
+                        <div class="mb-3">
+                            <label for="Email" class="form-label float-start">Email address</label>
+                            <input asp-for="Email" class="form-control" type="text" placeholder="Enter email" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Password" class="form-label float-start">Password</label>
+                            <input asp-for="Password" type="password" class="form-control" placeholder="Enter your password" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <div id="dvCaptcha"></div>
+                            <input type="hidden" id="hfCaptcha" />
+                            <span id="rvCaptcha" class="error" style="display:none">Captcha validation is required.</span>
+                        </div>
+
+                        <div class="mb-3 text-center">
+                            <button id="btnSubmit" class="btn rounded-pill btn-primary" name="Command" value="Login" type="submit">Sign In</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Google Captcha  -->
+    <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+    <script src="~/js/captcha.js"></script>
+
+    @* Verifying Google ReCaptcha *@
+    <script type="text/javascript">
+
+        var onloadCallback = function () {
+            grecaptcha.render('dvCaptcha', {
+                sitekey: '@gConfig.Value.SiteKey',
+                callback: function (token) {
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/Home/VerifyToken",
+                        data: { token: token },
+                        success: function (res) {
+                            checkResponse(res);
+                        }
+                    });
+                }
+            });
+        };
+    </script>
+</body>
+</html>
