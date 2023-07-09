@@ -1,0 +1,9 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h2 class="display-4" id="parent-div">Welcome</h2>
+</div>
+
+<button hx-post="/Home/GetData" hx-trigger="every 2s" hx-target="#parent-div" hx-swap="outerHTML">Click Me!</button>
