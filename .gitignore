@@ -11,6 +11,7 @@
 *.sln.docstates
 
 # Exclude folders
+.vscode
 FullStack_1/
 CRUD_Dapper/
 Programs/Number-system/
