@@ -1,0 +1,63 @@
+﻿@page 
+@model Web.Pages.Admin.FoodTypes.AddEditModel
+@{
+    ViewData["Title"] = "Add/Edit Food Type";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-12">
+            <h2 id="pageHeader" class="text-white text-center"></h2>
+        </div>
+
+        <!-- Shows all the validation summary here -->
+        <div asp-validation-summary="All"></div>
+    </div>
+    <br />
+
+    <div class="d-flex justify-content-center">
+        <div class="align-content-center" style="width: 30%;">
+            <form method="post" asp-page="Create">
+                <input id="txtId" hidden asp-for="FoodType.Id" />
+                <div class="mb-3">
+                    <label for="txtName" class="form-label" asp-for="FoodType.Name"></label>
+                    <input type="text" class="form-control" id="txtName" asp-for="FoodType.Name" placeholder="Enter name">
+                    <span asp-validation-for="FoodType.Name" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-center btn-group">
+                    <a class="btn btn-secondary mx-2 p-0" asp-page="Index" style="width: 150px; padding: 0.5px;">
+                        <i class="bi bi-arrow-left-circle" style="font-size: 24px;"></i>
+                    </a>
+                    <button type="submit" class="btn btn-primary mx-2" id="btnSave" style="width: 150px;"></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        // Addding Client side validations with this Partial Script added
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+    @* Set Save Button Text *@
+    <script type="text/javascript">
+        let oId = $(`#txtId`).val()
+
+        if(!oId) {
+            $(`#btnSave`).html(`Create`)
+            $(`#txtId`).val(`0`)
+
+            // Set Page Header Text
+            $(`#pageHeader`).text(`Create Food Type`)
+        }
+        else {
+            $(`#btnSave`).html(`Update`)
+
+            // Set Page Header Text
+            $(`#pageHeader`).text(`Update Food Type`)
+        }
+    </script>
+}

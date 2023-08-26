@@ -1,0 +1,175 @@
+﻿@page
+@model Web.Pages.Admin.MenuItems.AddEditModel
+@{
+    ViewData["Title"] = "Add/Edit Menu Item";
+}
+
+<style>
+    .imgFoodPic-shadow {
+        border: 2px solid;
+        padding: 10px;
+        box-shadow: 6px 4px;
+    }
+
+    #imgFoodPic {
+        height: 100%;
+        width: 100%;
+        max-width: 250px;
+        object-fit: contain;
+    }
+</style>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-12">
+            <h2 class="text-primary text-center">
+                @((Model.MenuItem.Id > 0) ? "Update" : "Create") Menu Item
+            </h2>
+        </div>
+
+        <!-- Shows all the validation summary here -->
+        <div asp-validation-summary="All"></div>
+    </div>
+    <br />
+
+    <div class="d-flex justify-content-center">
+        <div class="align-content-center w-100">
+            <form method="post" asp-page="Create" enctype="multipart/form-data">
+                <div class="row">
+
+                    <input id="txtId" hidden asp-for="MenuItem.Id" />
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <label for="txtName" class="form-label" asp-for="MenuItem.Name"></label>
+                            <input type="text" class="form-control" id="txtName" asp-for="MenuItem.Name" placeholder="Enter name">
+                            <span asp-validation-for="MenuItem.Name" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="ddCategory" class="form-label" asp-for="MenuItem.CategoryId"></label>
+                            <select asp-for="MenuItem.CategoryId" asp-items="Model.DDCategory" id="ddCategory" class="form-select">
+                                <option disabled selected>-- Slect Category --</option>
+                            </select>
+                            <span asp-validation-for="MenuItem.CategoryId" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="ddFoodType" class="form-label" asp-for="MenuItem.FoodTypeId"></label>
+                            <select asp-for="MenuItem.FoodTypeId" asp-items="Model.DDFoodType" id="ddFoodType" class="form-select">
+                                <option disabled selected>-- Slect Food Type --</option>
+                            </select>
+                            <span asp-validation-for="MenuItem.FoodTypeId" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="mb-3" style="margin-top: 5.4rem;">
+                            <label for="txtPrice" class="form-label" asp-for="MenuItem.Price"></label>
+                            <input type="number" class="form-control" id="txtPrice" asp-for="MenuItem.Price" placeholder="Enter price">
+                            <span asp-validation-for="MenuItem.Price" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fileImage" class="form-label" asp-for="MenuItem.Image"></label>
+                            <input type="file" id="fileImage" class="form-control" name="files" accept=".jpg, .jpeg, .png">
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="mt-3 d-flex justify-content-center">
+                            <p class="imgFoodPic-shadow">
+                                <img id="imgFoodPic"
+                                     src="@(!string.IsNullOrWhiteSpace(Model.MenuItem.Image) ? $"/images/MenuItems/{Model.MenuItem.Image}" : "/images/default-foodpic.png")"
+                                     alt="upload image" />
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="txtDesc" class="form-label" asp-for="MenuItem.Description"></label>
+                        <textarea asp-for="MenuItem.Description" id="txtDesc"></textarea>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center btn-group w-25">
+                    <a class="btn btn-secondary mx-2 p-0" asp-page="Index" style="width: 150px; padding: 0.5px;">
+                        <i class="bi bi-arrow-left-circle" style="font-size: 24px;"></i>
+                    </a>
+                    
+                    @if (Model.MenuItem.Id > 0)
+                    {
+                        <button type="submit" class="btn btn-primary mx-2" id="btnSave" style="width: 150px;">Update</button>
+                    }
+                    else
+                    {
+                        <button type="submit" onclick="return ValidateInput()" class="btn btn-primary mx-2" id="btnSave" style="width: 150px;">Create</button>
+                    }
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+    <!-- Addding Client side validations with this Partial Script added -->
+    <partial name="_ValidationScriptsPartial" />
+
+    <!-- TinyMCE editor -->
+    <script src="https://cdn.tiny.cloud/1/@Model.TinyMiceKey/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script type="text/javascript">
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+            mergetags_list: [
+                { value: 'First.Name', title: 'First Name' },
+                { value: 'Email', title: 'Email' },
+            ],
+            ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant"))
+        });
+
+        function ValidateInput() {
+            let file = document.getElementById("fileImage").value;
+
+            if (file == ``) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please upload an Image!',
+                });
+
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $(document).on('click', '#imgFoodPic', function () {
+                $('#fileImage').trigger('click');
+            });
+
+            function displayImage() {
+                var file = $("#fileImage")[0].files[0];
+                var imageType = /image.*/;
+
+                if (file && file.type.match(imageType)) {
+
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#imgFoodPic').attr("src", e.target.result);
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+
+                    $('#imgFoodPic').attr("src", "/images/default-foodpic.png");
+                    $('#fileImage').val('');
+                }
+            }
+
+            $('#fileImage').on('change', displayImage);
+        });
+    </script>
+}
