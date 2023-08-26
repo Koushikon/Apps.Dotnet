@@ -2,6 +2,7 @@
 using Library.DataAccess;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Text;
 
 namespace Web_Api.StartupConfig;
@@ -12,7 +13,52 @@ public static class DependencyExtensions
     {
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
+
+        // If we don't want Authorization in SwaggerUI use this
+        //builder.Services.AddSwaggerGen();
+
+        // Otherwise, Using this to Swagger gen code separation
+        builder.AddSwaggerServices();
+    }
+
+
+    /***
+     * This code adds Authtication with Swagger UI
+     */
+    private static void AddSwaggerServices(this WebApplicationBuilder builder)
+    {
+        // This works for v3 of Swagger
+        var securityScheme = new OpenApiSecurityScheme()
+        {
+            Name = "Authorization",
+            Description = "JWT authorization header info using bearer tokens",
+            In = ParameterLocation.Header,
+            Type = SecuritySchemeType.Http,
+            Scheme = "bearer",
+            BearerFormat = "JWT"
+        };
+
+        var securityRequirement = new OpenApiSecurityRequirement()
+        {
+            {
+                new OpenApiSecurityScheme()
+                {
+                    Reference = new OpenApiReference()
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "bearerAuth"
+                    }
+                },
+                new string[] {}
+            }
+        };
+
+        builder.Services.AddSwaggerGen(opts =>
+        {
+            opts.AddSecurityDefinition("bearerAuth", securityScheme);
+            opts.AddSecurityRequirement(securityRequirement);
+
+        });
     }
 
     public static void AddCustomServices(this WebApplicationBuilder builder)
