@@ -12,12 +12,14 @@
 
 # Exclude folders
 .vscode
-FullStack_1/
-CRUD_Dapper/
-Programs/Number-system/
-Parctice101/
 CRUD_Blazor_1/
 Identity_Login/
+
+# Not now
+Crud-Web_I/
+
+# Exclude Project not needed files
+RazorWeb_IV/Web/wwwroot/images/MenuItems/*
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
