@@ -8,6 +8,25 @@
 &emsp;![Visual Studio](https://img.shields.io/badge/Visual%20Studio-5C2D91.svg?style=flat&logo=visual-studio&logoColor=white)
 &emsp;[![Lines Of Code](https://tokei.rs/b1/github.com/Koushikon/ASP.Projects?category=code)](https://github.com/Koushikon/ASP.Projects)
 
+
+## Read Through
+
+### ASP.Net Web App Razor Pages Sequence:
+
+1. RazorWeb_I
+2. RazorWeb_II
+3. RazorWeb_III
+4. RazorWeb_IV
+
+
+### ASP.Net API Sequence:
+
+1. WebApi_I
+2. TodoApp
+3. TodoApp_Client
+4. WebApi_II
+5. MinimalApi_I
+
 ---
 
 ## DI_Demo_2
@@ -46,6 +65,13 @@
 ## LoggingDemo
 - ASP.Net App logging demo with `Microsoft Logging`.
 
+## Minimal_API-Dapper
+- 
+
+## MinimalApi_I
+- This Project implements ASP.Net Minimal Api with database CRUD operations.
+- This also implements Authentication and Authorization with JWT token.
+
 ## QR_Builder
 - QR Code builder with ASP.Net Framework
 
@@ -54,28 +80,32 @@
 - Read Connection String inside a Controller.
 
 ## ReadQueryString
-- Read Http URL Query String in different ways in ASP.Net App
-
-## WebApi
-- `API_i` Project describes how we should make API Controllers standard practices etc.
-- `APISecurity` Project describes Authentication & Authorization with Claim, Policy based of an API.
-- `Web_i` describes Creating an API Controller inside MVC Project useful when API service is small part of the App.
-- `APIMonitor` Project describes looging, Health checking and Monitoring of an API
-- `APIProtection` Project describes API protection using data validation, caching and IP rate limiting.
+- Read Http URL Query String in different ways in ASP.Net App.
 
 ## RetriveHostIP
-- Different ways we can get the Client IP address on the Web Server
+- Different ways we can get the Client IP address on the Web Server.
 
 ## TodoApp WebApi App
-- This Web Api made using `Dapper` micro-orm for DataAccess of `CRUD` operation, Api `Health-Checks`, Token `Authentication and Authorization` etc.
+- `Library` and `Web_Api` Project using `Dapper` micro-orm for DataAccess of `CRUD` operation, Api `Health-Checks`, Token `Authentication and Authorization` etc.
+- `TodosDB` This is a Todos Database Project Todo Web API.
 
 ## TodoApp_Client WebClient App
 - `Blz_Web`: Build an Blazor App accessing the TodoApp as Api Service to get the data.
 - `Blz_SwaggerAuto`: OpenApi Generated C# Api Client code.
 
 ## View Data Binding:
-- Blazor One Way, Two Way Binding
-![Data Bind Project Picture](./_Files/data-binding.png)
+- This Blazor Project describes use of One Way, Two Way Binding.
+
+## WebApi_I
+- `API_i` Project describes how we should make API Controllers standard practices etc.
+- `APIMonitor` Project describes logging, Health checking and Monitoring of an API
+- `APIProtection` Project describes API protection using data validation, caching and IP rate limiting.
+- `APISecurity` Project describes Authentication & Authorization with Claim, Policy based of an API.
+- `APIVersion` Project describes implementation of API versioning.
+- `Web_i` describes Creating an API Controller inside MVC Project useful when API service is small part of the App.
+
+## WebApi_II
+- `SwaggerApi` Project describes adding API, endpoint documentation and use of documentatnion comments also adding Swagger themes.
 
 
 [link1001]: https://hashids.org/net/
