@@ -43,6 +43,10 @@
 ## EditorConfig_Setup
 - Setup a `.editorconfig` file to Reorganize the Text, Indentation, Naming convention etc.
 
+## FileUploading
+- `WebApi`: This web api project implements large file uploading using Stream instead of bye[] or MemoryStream which take lot of resources on the server.
+- `WebMVC`:
+
 ## FluentValidationApp
 - User Input Validation using Nuget Package `Fluent Validation`.
 - Use Fluent Validation for different Project types `Console`, `WebApp` etc.
@@ -75,12 +79,25 @@
 ## QR_Builder
 - QR Code builder with ASP.Net Framework
 
-## Read_ConnectionString
-- Different way to Read Connection String from `Enviroment Variable`, `appsettings.json` etc.
-- Read Connection String inside a Controller.
+## RazorWeb Razor Page Project
+- Shopper a Food delivery system with `Microft Identity` system, `EF Core` `Toastr` alerts, and more.
+- This project implements product showcase page, cart manage, order, payment system and more.
+- Development in sequence of learning:
+    - RazorWeb_I
+    - RazorWeb_II
+    - RazorWeb_III
+    - RazorWeb_IV
+    - RazorWeb_V
+    - RazorWeb_VI
 
-## ReadQueryString
-- Read Http URL Query String in different ways in ASP.Net App.
+
+## ReadAppsettings.json
+- `ReadJsonArray` Read Json data from appsettings.json and map that into List of classes using GetSection(), GetChildren(), and more.
+- `Web` Different way to Read Connection String from `Enviroment Variable`, `appsettings.json` etc inside a Controller.
+
+## ReadRequestParameters
+- `OnHttpGet` implements several ways to pass parameters to a HttpGet request.
+- `ReadQueryString` Read Http URL Query String in different ways in ASP.Net App.
 
 ## RetriveHostIP
 - Different ways we can get the Client IP address on the Web Server.

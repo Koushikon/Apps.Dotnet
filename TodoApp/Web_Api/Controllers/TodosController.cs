@@ -41,6 +41,8 @@ public class TodosController : ControllerBase
         catch (Exception ex)
         {
             _log.Error("Call to api/Todos and Getting data failed.", ex);
+
+            //return Ok("There was an error"); // Don't do it like that
             return BadRequest();
         }
     }
