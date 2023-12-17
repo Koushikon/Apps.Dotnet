@@ -1,0 +1,27 @@
+﻿@page "/factorial"
+
+@using View_Data_Binding.Data
+@inherits Customer
+
+<h3>Find Factorial</h3>
+
+<div class="d-flex justify-content-center">
+    <div class="w-50">
+        <div class="form-group">
+            <label for="number">Enter Number:</label>
+            <input class="form-control" type="number" @bind="Number" id="number" placeholder="Number" />
+        </div>
+        <div class="form-group">
+            <label>
+                <b>
+                    @Number's Factorial number is:
+                    @if(SumOfNEven > 0)
+                        @Factorial
+                </b>
+            </label>
+        </div>
+    </div>
+</div>
+
+@code {}
+

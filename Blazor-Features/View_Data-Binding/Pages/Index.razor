@@ -1,0 +1,25 @@
+﻿@page "/"
+
+@using View_Data_Binding.Data
+@inherits Customer
+
+<h1>Hello, world!</h1>
+
+<details>
+    <summary>One Way Binding: </summary>
+    <p><b>Name:</b> @Name</p>
+</details>
+
+<details>
+    <summary>Two Way Binding: </summary>
+    <table class="table">
+        <tr>
+            <th>Address:</th>
+            <td><input class="form-control"  type="text" @bind="Address" /></td>
+        </tr>
+        <tr>
+            <th>Typed Address:</th>
+            <td>@Address</td>
+        </tr>
+    </table>
+</details>
