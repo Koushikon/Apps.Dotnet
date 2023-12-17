@@ -1,0 +1,3 @@
+# Target Multiple Dotnet Framework in Single Project
+
+Here we're Targeting `Multiple Dotnet Frameworks` on a Single Project. Add different Nuget packages with different versions with condition to certain `Dotnet Framework` and Condition Compilation using preprocessor directives like `#if, #elif, #else and #endif` to tell the compiler which code to include or exclude during compilation, based on predefined conditions.
