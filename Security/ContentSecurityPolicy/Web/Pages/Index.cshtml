@@ -1,0 +1,26 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<style type="text/css">
+    body {
+        background-color: #fff0;
+    }
+</style>
+
+<script type="text/javascript">
+    document.onload = alert("Hello!");
+</script>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    
+    <h2>User Id: @Html.Raw(Request.Query["UserId"])</h2>
+
+    <a class="btn btn-primary" href="https://localhost:7019?UserId=1400">Reload with User Id</a>
+    <a class="btn btn-warning" href="https://localhost:7019/?UserId=%3Cscript%20type=%22text/javascript%22%3E%20var%20adr%20=%20alert(escape(document.cookie));%20%3C/script%3E">Reload with Xss Script</a>
+
+    <img src="./images/cross-site-scripting-examples.svg" />
+</div>
