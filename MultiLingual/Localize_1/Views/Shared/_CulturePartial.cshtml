@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNetCore.Localization;
+@using Microsoft.AspNetCore.Mvc.Localization;
+@using Microsoft.Extensions.Options
+
+@inject IOptions<RequestLocalizationOptions> LocalizationOptions
+
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>()!;
+
+    /***
+     * This one shows dropdown item names like this (en-GB, bn-IN, es)
+     * 
+     * With this one we don't need shared resources here: ".\Localize_1\Resources\Views\Shared\"
+     */
+    var cultureItems = LocalizationOptions.Value.SupportedUICultures!
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.Name })
+        .ToList();
+
+    var returnUrl = string.IsNullOrWhiteSpace(Context.Request.Path) ? "~/" : $"{Context.Request.Path.Value}{Context.Request.QueryString}" ;
+}
+
+<div title="Request culture provider: CookieRequestCultureProvider">
+    <form asp-controller="Culture" asp-action="SetCulture" asp-route-returnUrl="@returnUrl" class="form-horizontal nav-link text-dark">
+        <select class="form-select" name="culture"
+                onchange="this.form.submit();"
+                asp-for="@requestCulture.RequestCulture.UICulture.Name"
+                asp-items="cultureItems">
+        </select>
+    </form>
+</div>

@@ -1,0 +1,44 @@
+﻿@model PersonViewModel
+@{
+    ViewData["Title"] = "Data Annotations with Localization";
+}
+
+<div class="container p-3">
+
+    <div class="d-flex justify-content-center">
+        <div class="align-content-center" style="width: 30%;">
+            <form asp-action="DataAnnotationView" asp-route-culture=@(ViewBag.Culture) method="post">
+                <div class="mb-3">
+                    <label asp-for="FirstName" class="lable-control"></label>
+                    <input asp-for="FirstName" type="text" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="LastName" class="lable-control"></label>
+                    <input asp-for="LastName" type="text" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Age" class="lable-control"></label>
+                    <input asp-for="Age" type="number" class="form-control" />
+                    <span asp-validation-for="Age" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="DateOfJoin" class="lable-control"></label>
+                    <input asp-for="DateOfJoin" type="Date" class="form-control" />
+                    <span asp-validation-for="DateOfJoin" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-center btn-group">
+                    <a class="btn btn-secondary mx-2" asp-action="Index" style="width: 150px;">Back</a>
+                    <button type="submit" class="btn btn-primary mx-2" style="width: 150px;">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <!-- This is needed for client-side validation -->
+    <partial name="_ValidationScriptsPartial" />
+}
