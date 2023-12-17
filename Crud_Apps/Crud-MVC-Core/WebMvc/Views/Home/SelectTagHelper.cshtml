@@ -1,0 +1,24 @@
+﻿@model WebMvc.Models.Person
+@{
+    ViewData["Title"] = "Select Tag Helper";
+}
+
+<h2>Select List Tag Helper Demo</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SelectTagHelper">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <select asp-for="EmployeeId" asp-items="ViewBag.employeeList" class="form-select"></select>
+                <span asp-validation-for="EmployeeId" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <button type="submit" value="Create" class="btn btn-primary">Save</button>
+                <button type="reset" class="btn btn-secondary">Clear</button>
+            </div>
+        </form>
+    </div>
+</div>

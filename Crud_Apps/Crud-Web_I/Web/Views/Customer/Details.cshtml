@@ -1,0 +1,38 @@
+﻿@model Web.Models.Customer
+@{
+    ViewBag.Title = "Create Customer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="container card w-50 mt-5">
+        <div class="card-body">
+            <table class="table">
+                <tr>
+                    <th scope="col">Name : </th>
+                    <td>@Html.DisplayFor(model => model.Name)</td>
+                </tr>
+                <tr>
+                    <th scope="col">Email Id : </th>
+                    <td>@Html.DisplayFor(model => model.EmailID)</td>
+                </tr>
+                <tr>
+                    <th scope="col">Mobile No. : </th>
+                    <td>@Html.DisplayFor(model => model.Mobileno)</td>
+                </tr>
+                <tr>
+                    <th scope="col">Date of Birth : </th>
+                    <td>@Html.DisplayFor(model => model.Birthdate)</td>
+                </tr>
+                <tr>
+                    <th scope="col">Address : </th>
+                    <td>@Html.DisplayFor(model => model.Address)</td>
+                </tr>
+            </table>
+            <p class="text-center">
+                @Html.ActionLink("Modify", "Edit", new { id = Model.CustomerID }, new { @class = "btn btn-info btn-primary" })
+                @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-primary" })
+            </p>
+        </div>
+    </div>
+</div>

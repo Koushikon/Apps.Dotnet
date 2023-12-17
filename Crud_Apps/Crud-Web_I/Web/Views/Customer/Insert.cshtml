@@ -1,0 +1,40 @@
+﻿@model Web.Models.Customer
+@{
+    ViewBag.Title = "Create Customer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="container card w-50">
+        <div class="card-body">
+            @using (Html.BeginForm())
+            {
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Name, new { @class = "form-label", @for = "uName" })
+                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @id = "uName", @placeholder = "Full name" })
+                </div>
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.EmailID, new { @class = "form-label", @for = "uEmail" })
+                    @Html.TextBoxFor(model => model.EmailID, new { @class = "form-control", @id = "uEmail", @type = "email", placeholder = "Email Id" })
+                </div>
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Mobileno, new { @class = "form-label", @for = "uMobile" })
+                    @Html.TextBoxFor(model => model.Mobileno, new { @class = "form-control", @id = "uMobile", @type = "tel", placeholder = "Mobile No." })
+                </div>
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Birthdate, new { @class = "form-label", @for = "uDob" })
+                    @Html.TextBoxFor(model => model.Birthdate, new { @class = "form-control", @id = "uDob", @type = "date"})
+                </div>
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Address, new { @class = "form-label", @for = "uAddress" })
+                    @Html.TextAreaFor(model => model.Address, new { @class = "form-control", @id = "uAddress", placeholder = "Address..." })
+                </div>
+                <p>
+                    <input class="btn btn-info btn-primary" type="submit" value="Insert" />
+                    <input class="btn btn-info btn-warning" type="reset" value="Reset" />
+                    @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-primary" })
+                </p>
+            }
+        </div>
+    </div>
+</div>
