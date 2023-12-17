@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Matrix", "Matrix\Matrix.csproj", "{E9582148-714A-4856-A560-D78CC0D95EE2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library", "Library\Library.csproj", "{F64E7AE7-A482-4423-9264-BC9BF5A4ADBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixAsync", "MatrixAsync\MatrixAsync.csproj", "{E14FE372-819B-4DC8-857B-556F2CA39B03}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E9582148-714A-4856-A560-D78CC0D95EE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9582148-714A-4856-A560-D78CC0D95EE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9582148-714A-4856-A560-D78CC0D95EE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9582148-714A-4856-A560-D78CC0D95EE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F64E7AE7-A482-4423-9264-BC9BF5A4ADBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F64E7AE7-A482-4423-9264-BC9BF5A4ADBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F64E7AE7-A482-4423-9264-BC9BF5A4ADBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F64E7AE7-A482-4423-9264-BC9BF5A4ADBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E14FE372-819B-4DC8-857B-556F2CA39B03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E14FE372-819B-4DC8-857B-556F2CA39B03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E14FE372-819B-4DC8-857B-556F2CA39B03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E14FE372-819B-4DC8-857B-556F2CA39B03}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {942AD2CA-6E3E-41DD-AE02-2DF9752C9C1E}
+	EndGlobalSection
+EndGlobal
