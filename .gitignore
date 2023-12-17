@@ -15,9 +15,6 @@
 CRUD_Blazor_1/
 Identity_Login/
 
-# Not now
-Crud-Web_I/
-
 # Exclude Project not needed files
 RazorWeb_IV/Web/wwwroot/images/MenuItems/*
 
