@@ -7,8 +7,8 @@ Accept: text/plain
 Content-Type: application/json
 
 {
-  "userName": "username",
-  "userPassword": "password"
+  "userName": "userName",
+  "userPassword": "userPassword"
 }
 
 ### Get all Todos

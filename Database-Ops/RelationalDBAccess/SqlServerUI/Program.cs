@@ -4,6 +4,11 @@ using Microsoft.Extensions.Configuration;
 
 namespace SqlServerUI;
 
+/***
+ * Dapper With Command Timeout: https://code-maze.com/dotnet-handling-commandtimeout-with-dapper/
+ * Repo: https://github.com/CodeMazeBlog/CodeMazeGuides/tree/main/dotnet-dapper/HandlingCommandTimeoutWithDapper
+ */
+
 sealed class Program
 {
 	static void Main()
