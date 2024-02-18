@@ -1,0 +1,101 @@
+﻿@model Ticket
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <div class="mx-auto w-50">
+        <form method="post" id="ticketForm" asp-action="Index" asp-controller="Home">
+
+            <div class="mb-3">
+                <label for="textName" class="form-label">Ticket Name <span class="text-danger">*</span></label>
+                <input type="text" asp-for="Name" class="form-control" id="textName" required>
+            </div>
+            <div class="mb-3">
+                <label for="textType" class="form-label">Ticket Type <span class="text-danger">*</span></label>
+                <input type="text" asp-for="Type" class="form-control" id="textType" required>
+            </div>
+            <div class="mb-3">
+                <label for="texttPrice" class="form-label">Ticket Price <span class="text-danger">*</span></label>
+                <input type="number" asp-for="Price" class="form-control" id="texttPrice" required>
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" asp-for="IsAgreeOnPrivacy" class="form-check-input" id="checkPrivacy">
+                <label class="form-check-label" for="checkPrivacy">Agree Terms & Condition</label>
+            </div>
+
+            <div class="text-center">
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" name="FormTask" value="Save" />
+
+                <button type="submit" id="btnSave" class="btn btn-primary">Save</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+            </div>
+        </form>
+    </div>    
+</div>
+
+
+@if (!string.IsNullOrEmpty(TempData["Msg"]?.ToString()))
+{
+    <script type="text/javascript">
+        let message = `@TempData["Msg"]`;
+
+        window.onload = function () {
+            showAlertMessage('success', 'Successful!', message);
+        }
+    </script>
+}
+else if (!string.IsNullOrEmpty(TempData["ErrorMsg"]?.ToString()))
+{
+    <script type="text/javascript">
+        let message = `@TempData["ErrorMsg"]`;
+
+        window.onload = function () {
+            showAlertMessage('error', 'Oops...', message);
+        }
+    </script>
+}
+
+
+@section Scripts {
+
+    <script type="text/javascript">
+
+        // Show alert message
+        function showAlertMessage(msgIcon, title, msg) {
+
+            swal({
+                icon: msgIcon,
+                title: title,
+                text: msg
+            });
+        }
+
+        // Form Submit action
+        $('#btnSave').click(function (e) {
+
+            let ticketForm = document.getElementById("ticketForm");
+            if (!ticketForm.checkValidity())
+                return;
+
+            e.preventDefault();
+
+            swal({
+                title: "Are you sure you want to save?",
+                text: "The old data of this layer will be replaced by the new data of this layer in this file.",
+                icon: "warning",
+                buttons: {
+                    cancel: "No",
+                    confirm: "Yes",
+                },
+                dangerMode: true,
+            }).then((willDelete) => {
+
+                if (willDelete) {
+                    ticketForm.submit();
+                }
+            });
+        });
+    </script>
+}
