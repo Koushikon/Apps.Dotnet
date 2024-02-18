@@ -1,0 +1,23 @@
+﻿@page "/"
+<PageTitle>Index</PageTitle>
+
+<h1>GitHub account information</h1>
+
+<EditForm class="row g-3" Model="@_modelItem" OnValidSubmit="AddItem">
+    <label for="basic-url" class="form-label">Load Github account information</label>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon3">https://api.github.com/users/</span>
+        <InputText class="form-control" id="basic-url" @bind-Value="_modelItem.AccountName" aria-describedby="basic-addon3" placeholder="Account Name" />
+        <button class="btn btn-secondary" type="submit">Load Account Info</button>
+    </div>
+    <p>@_modelItem.AccountInfo</p>
+</EditForm>
+
+@code {
+    private GitHubSearchComponent _modelItem = new();
+
+    private async void AddItem()
+    {
+        await _modelItem.LoadAccount();
+    }
+}
