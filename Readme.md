@@ -17,6 +17,8 @@
 2. RazorWeb_II
 3. RazorWeb_III
 4. RazorWeb_IV
+5. RazorWeb_V
+6. RazorWeb_VI
 
 
 ### ASP.Net API Sequence:
@@ -28,6 +30,16 @@
 5. MinimalApi_I
 
 ---
+
+## Authentication
+
+### BasicAuthentication
+- `Server`: This Web Api project demonstrate Basic Authentication technique using Http Authorization header.
+- `Client`: This Web Project Connect to the Server Api Project, Authenticate and retrive the data.
+
+## Benchmark_Test
+- The main purpose of this project is to Benchmark some methods and see which one is faster and takes less memory.
+- This Projct implements different ways we can get the Year from a string date.
 
 ## DI_Demo_2
 - Blazor with Dependency Injection with Different Types and Classes
@@ -82,13 +94,6 @@
 ## RazorWeb Razor Page Project
 - Shopper a Food delivery system with `Microft Identity` system, `EF Core` `Toastr` alerts, and more.
 - This project implements product showcase page, cart manage, order, payment system and more.
-- Development in sequence of learning:
-    - RazorWeb_I
-    - RazorWeb_II
-    - RazorWeb_III
-    - RazorWeb_IV
-    - RazorWeb_V
-    - RazorWeb_VI
 
 
 ## ReadAppsettings.json
