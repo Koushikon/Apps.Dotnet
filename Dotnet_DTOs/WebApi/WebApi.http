@@ -1,0 +1,6 @@
+@WebApi_HostAddress = https://localhost:7145/api
+
+GET {{WebApi_HostAddress}}/stock
+Accept: application/json
+
+###
