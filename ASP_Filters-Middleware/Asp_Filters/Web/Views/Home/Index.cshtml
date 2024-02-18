@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style type="text/css">
+    .test-link {
+        text-decoration: none;
+    }
+</style>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>
+
+<ul>
+    <li><a class="test-link" asp-controller="Auth" asp-action="Read" target="_blank">Authorize Filter (Auth/Read)</a></li>
+    <li><a class="test-link" asp-controller="Auth" asp-action="Edit" target="_blank">Authorize Filter (Auth/Edit)</a></li>
+    
+</ul>
