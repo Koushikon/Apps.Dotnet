@@ -1,0 +1,22 @@
+﻿@model Users
+@{
+    ViewData["Title"] = "Login Page";
+}
+
+<form asp-action="Index" method="post">
+    <div class="row mb-3">
+        <label asp-for="UserName" class="col-sm-2 col-form-label">UserName</label>
+        <div class="col-sm-10">
+            <input asp-for="UserName" type="text" class="form-control">
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label asp-for="Password" for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-10">
+            <input asp-for="Password" type="password" class="form-control">
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign in</button>
+</form>
