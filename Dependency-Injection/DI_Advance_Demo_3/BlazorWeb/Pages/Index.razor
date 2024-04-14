@@ -1,0 +1,30 @@
+﻿@page "/"
+
+@inject IEnumerable<IDemo> _demos
+@inject IEnumerable<IUTCDemo> _utcDemos
+@inject DemoWIthData demoData
+@inject ProcessDemo _processDemo
+
+<PageTitle>Index</PageTitle>
+
+<h3>Dependency Injection Demo</h3>
+
+<p>
+    @foreach (var item in _demos)
+    {
+        <strong>Startup Time: </strong>
+        @item.StartupTime.ToString("hh:mm:ss fffffff")
+        <br />
+    }
+
+    @foreach (var item in _utcDemos)
+    {
+        <strong>Startup Time 2nd: </strong>
+        @item.StartupTime.ToString("hh:mm:ss fffffff")
+        <br />
+    }
+
+    <strong>Data: @demoData.Get()</strong>
+    <br/>
+    <strong>Days in Month: </strong>@_processDemo.GetDaysMonth()
+</p>
