@@ -1,0 +1,42 @@
+﻿@model WebMvc.Models.Menu
+@{
+    ViewData["Title"] = "Details";
+}
+
+<fieldset>
+    <legend><h3>Menu</h3></legend>
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Name) : @Html.DisplayFor(model => model.Name) (@Html.DisplayFor(model => model.Description))
+    </div>
+    <fieldset>
+        @if (Model?.MenuItems != null && Model?.MenuItems.Count > 0)
+        {
+            <legend>Menu Items</legend>
+
+            foreach (var item in Model.MenuItems)
+            {
+                <div style="border: solid 1px #F0F0F0; margin: 2px">
+                    <div class="comment-author">
+                        Text: @item.Name
+                    </div>
+                    <div class="comment-message">
+                        Disable: @item.Disable
+                    </div>
+                    <div class="comment-message">
+                        HasAccess: @item.HasAccess
+                    </div>
+                    <p>
+                        @Html.ActionLink("Edit", "Edit", "MenuItem", new { parentMenuId = Model.Id, id = item.Id }, null)
+                        |
+                        @Html.ActionLink("Delete", "Delete", "MenuItem", new { parentMenuId = Model.Id, id = item.Id }, null)
+                    </p>
+                </div>
+            }
+        }
+    </fieldset>
+    <div id="addMenuItem" style="display: inline;">
+        <div>
+            @Html.ActionLink("Add Menu Item", "Create", "MenuItem", new { parentMenuId = Model.Id }, null)
+        </div>
+    </div>
+</fieldset>
