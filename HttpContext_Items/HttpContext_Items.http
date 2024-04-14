@@ -1,6 +1,0 @@
-@HttpContext_Items_HostAddress = http://localhost:5017
-
-GET {{HttpContext_Items_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
