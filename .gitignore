@@ -9,6 +9,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+24-06-27_Code_CoalBag_RepositoryPattern.zip
 
 # Exclude folders
 .vscode
