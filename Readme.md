@@ -8,28 +8,9 @@
 &emsp;![Visual Studio](https://img.shields.io/badge/Visual%20Studio-5C2D91.svg?style=flat&logo=visual-studio&logoColor=white)
 &emsp;[![Lines Of Code](https://tokei.rs/b1/github.com/Koushikon/ASP.Projects?category=code)](https://github.com/Koushikon/ASP.Projects)
 
+## How to Strucure the Projects
 
-## Read Through
-
-### ASP.Net Web App Razor Pages Sequence:
-
-1. RazorWeb_I
-2. RazorWeb_II
-3. RazorWeb_III
-4. RazorWeb_IV
-5. RazorWeb_V
-6. RazorWeb_VI
-
-
-### ASP.Net API Sequence:
-
-1. WebApi_I
-2. TodoApp
-3. TodoApp_Client
-4. WebApi_II
-5. MinimalApi_I
-
----
+- [Repository Structure][link1002]
 
 ## Authentication
 
@@ -131,3 +112,4 @@
 
 
 [link1001]: https://hashids.org/net/
+[link1002]: ./_Files/structure.md
